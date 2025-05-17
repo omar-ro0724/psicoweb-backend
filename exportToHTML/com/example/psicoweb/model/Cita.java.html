@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>Cita.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Cita.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">psicoweb</span><span class="s2">.</span><span class="s1">model</span><span class="s2">;</span>
+
+
+<span class="s0">import </span><span class="s1">jakarta</span><span class="s2">.</span><span class="s1">persistence</span><span class="s2">.*;</span>
+
+<span class="s1">@Entity</span>
+<span class="s1">@Table</span><span class="s2">(</span><span class="s1">name </span><span class="s2">= </span><span class="s3">&quot;citas&quot;</span><span class="s2">)</span>
+<span class="s0">public class </span><span class="s1">Cita </span><span class="s2">{</span>
+
+    <span class="s1">@Id</span>
+    <span class="s1">@GeneratedValue</span><span class="s2">(</span><span class="s1">strategy </span><span class="s2">= </span><span class="s1">GenerationType</span><span class="s2">.</span><span class="s1">IDENTITY</span><span class="s2">)</span>
+    <span class="s0">private </span><span class="s1">Long idCita</span><span class="s2">;</span>
+
+    <span class="s0">private </span><span class="s1">Long idPaciente</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">Long idDisp</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">String fechaReserva</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">String estado</span><span class="s2">;</span>
+
+    <span class="s1">@ManyToOne</span>
+    <span class="s1">@JoinColumn</span><span class="s2">(</span><span class="s1">name </span><span class="s2">= </span><span class="s3">&quot;idPaciente&quot;</span><span class="s2">, </span><span class="s1">insertable </span><span class="s2">= </span><span class="s0">false</span><span class="s2">, </span><span class="s1">updatable </span><span class="s2">= </span><span class="s0">false</span><span class="s2">)</span>
+    <span class="s0">private </span><span class="s1">Paciente paciente</span><span class="s2">;</span>
+
+    <span class="s1">@ManyToOne</span>
+    <span class="s1">@JoinColumn</span><span class="s2">(</span><span class="s1">name </span><span class="s2">= </span><span class="s3">&quot;idDisp&quot;</span><span class="s2">, </span><span class="s1">insertable </span><span class="s2">= </span><span class="s0">false</span><span class="s2">, </span><span class="s1">updatable </span><span class="s2">= </span><span class="s0">false</span><span class="s2">)</span>
+    <span class="s0">private </span><span class="s1">Disponibilidad disponibilidad</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">Long getIdCita</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">idCita</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setIdCita</span><span class="s2">(</span><span class="s1">Long idCita</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">idCita </span><span class="s2">= </span><span class="s1">idCita</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">Long getIdPaciente</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">idPaciente</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setIdPaciente</span><span class="s2">(</span><span class="s1">Long idPaciente</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">idPaciente </span><span class="s2">= </span><span class="s1">idPaciente</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">Long getIdDisp</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">idDisp</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setIdDisp</span><span class="s2">(</span><span class="s1">Long idDisp</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">idDisp </span><span class="s2">= </span><span class="s1">idDisp</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getFechaReserva</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">fechaReserva</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setFechaReserva</span><span class="s2">(</span><span class="s1">String fechaReserva</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">fechaReserva </span><span class="s2">= </span><span class="s1">fechaReserva</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getEstado</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">estado</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setEstado</span><span class="s2">(</span><span class="s1">String estado</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">estado </span><span class="s2">= </span><span class="s1">estado</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">Paciente getPaciente</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">paciente</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setPaciente</span><span class="s2">(</span><span class="s1">Paciente paciente</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">paciente </span><span class="s2">= </span><span class="s1">paciente</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">Disponibilidad getDisponibilidad</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">disponibilidad</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setDisponibilidad</span><span class="s2">(</span><span class="s1">Disponibilidad disponibilidad</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">disponibilidad </span><span class="s2">= </span><span class="s1">disponibilidad</span><span class="s2">;</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>

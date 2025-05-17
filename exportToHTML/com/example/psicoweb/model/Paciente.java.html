@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>Paciente.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Paciente.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">psicoweb</span><span class="s2">.</span><span class="s1">model</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">jakarta</span><span class="s2">.</span><span class="s1">persistence</span><span class="s2">.*;</span>
+
+<span class="s1">@Entity</span>
+<span class="s1">@Table</span><span class="s2">(</span><span class="s1">name </span><span class="s2">= </span><span class="s3">&quot;pacientes&quot;</span><span class="s2">)</span>
+<span class="s0">public class </span><span class="s1">Paciente </span><span class="s2">{</span>
+
+    <span class="s1">@Id</span>
+    <span class="s0">private </span><span class="s1">Long idPaciente</span><span class="s2">; </span><span class="s4">// FK de Usuario</span>
+
+    <span class="s0">private </span><span class="s1">String fechaNacimiento</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">String genero</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">String telefono</span><span class="s2">;</span>
+
+    <span class="s1">@OneToOne</span>
+    <span class="s1">@JoinColumn</span><span class="s2">(</span><span class="s1">name </span><span class="s2">= </span><span class="s3">&quot;idPaciente&quot;</span><span class="s2">, </span><span class="s1">referencedColumnName </span><span class="s2">= </span><span class="s3">&quot;idUsuario&quot;</span><span class="s2">, </span><span class="s1">insertable </span><span class="s2">= </span><span class="s0">false</span><span class="s2">, </span><span class="s1">updatable </span><span class="s2">= </span><span class="s0">false</span><span class="s2">)</span>
+    <span class="s0">private </span><span class="s1">Usuario usuario</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">Long getIdPaciente</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">idPaciente</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setIdPaciente</span><span class="s2">(</span><span class="s1">Long idPaciente</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">idPaciente </span><span class="s2">= </span><span class="s1">idPaciente</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getFechaNacimiento</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">fechaNacimiento</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setFechaNacimiento</span><span class="s2">(</span><span class="s1">String fechaNacimiento</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">fechaNacimiento </span><span class="s2">= </span><span class="s1">fechaNacimiento</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getGenero</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">genero</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setGenero</span><span class="s2">(</span><span class="s1">String genero</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">genero </span><span class="s2">= </span><span class="s1">genero</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getTelefono</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">telefono</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setTelefono</span><span class="s2">(</span><span class="s1">String telefono</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">telefono </span><span class="s2">= </span><span class="s1">telefono</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">Usuario getUsuario</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">usuario</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setUsuario</span><span class="s2">(</span><span class="s1">Usuario usuario</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">usuario </span><span class="s2">= </span><span class="s1">usuario</span><span class="s2">;</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>

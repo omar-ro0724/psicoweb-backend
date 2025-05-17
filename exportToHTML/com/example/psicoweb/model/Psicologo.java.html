@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>Psicologo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Psicologo.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">psicoweb</span><span class="s2">.</span><span class="s1">model</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">jakarta</span><span class="s2">.</span><span class="s1">persistence</span><span class="s2">.*;</span>
+
+<span class="s1">@Entity</span>
+<span class="s1">@Table</span><span class="s2">(</span><span class="s1">name </span><span class="s2">= </span><span class="s3">&quot;psicologos&quot;</span><span class="s2">)</span>
+<span class="s0">public class </span><span class="s1">Psicologo </span><span class="s2">{</span>
+
+    <span class="s1">@Id</span>
+    <span class="s0">private </span><span class="s1">Long idPsicologo</span><span class="s2">; </span><span class="s4">// FK de Usuario</span>
+
+    <span class="s0">private </span><span class="s1">String especialidad</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">String descripcion</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">Double tarifa</span><span class="s2">;</span>
+
+    <span class="s1">@OneToOne</span>
+    <span class="s1">@JoinColumn</span><span class="s2">(</span><span class="s1">name </span><span class="s2">= </span><span class="s3">&quot;idPsicologo&quot;</span><span class="s2">, </span><span class="s1">referencedColumnName </span><span class="s2">= </span><span class="s3">&quot;idUsuario&quot;</span><span class="s2">, </span><span class="s1">insertable </span><span class="s2">= </span><span class="s0">false</span><span class="s2">, </span><span class="s1">updatable </span><span class="s2">= </span><span class="s0">false</span><span class="s2">)</span>
+    <span class="s0">private </span><span class="s1">Usuario usuario</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">Long getIdPsicologo</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">idPsicologo</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setIdPsicologo</span><span class="s2">(</span><span class="s1">Long idPsicologo</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">idPsicologo </span><span class="s2">= </span><span class="s1">idPsicologo</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getEspecialidad</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">especialidad</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setEspecialidad</span><span class="s2">(</span><span class="s1">String especialidad</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">especialidad </span><span class="s2">= </span><span class="s1">especialidad</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getDescripcion</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">descripcion</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setDescripcion</span><span class="s2">(</span><span class="s1">String descripcion</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">descripcion </span><span class="s2">= </span><span class="s1">descripcion</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">Double getTarifa</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">tarifa</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setTarifa</span><span class="s2">(</span><span class="s1">Double tarifa</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">tarifa </span><span class="s2">= </span><span class="s1">tarifa</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">Usuario getUsuario</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">usuario</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setUsuario</span><span class="s2">(</span><span class="s1">Usuario usuario</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">usuario </span><span class="s2">= </span><span class="s1">usuario</span><span class="s2">;</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>
