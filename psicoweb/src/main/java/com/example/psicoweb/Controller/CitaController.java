@@ -13,8 +13,8 @@ import java.util.List;
 public class CitaController {
     @Autowired private CitaService servicio;
 
-    @PostMapping("/crear")
-    public Cita crear(@RequestBody Cita c) { return servicio.crear(c); }
+    @PostMapping("/agendar")
+    public Cita agendar (@RequestBody Cita cita) { return servicio.crear(cita); }
 
     @GetMapping("/porPsicologo/{id}")
     public List<Cita> porPsicologo(@PathVariable Long id) { return servicio.porPsicologo(id); }

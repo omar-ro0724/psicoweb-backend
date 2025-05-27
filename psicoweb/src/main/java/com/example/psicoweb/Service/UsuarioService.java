@@ -1,6 +1,8 @@
 package com.example.psicoweb.Service;
 
+import com.example.psicoweb.Repository.PacienteRepository;
 import com.example.psicoweb.Repository.UsuarioRepository;
+import com.example.psicoweb.model.Paciente;
 import com.example.psicoweb.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,12 +17,6 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    public Usuario registrarUsuario(Usuario usuario) {
-        // Encriptar la contraseña antes de guardar
-        usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
-        return usuarioRepository.save(usuario);
-    }
 
 
     public Optional<Usuario> login(String correo, String contrasena) {
@@ -50,4 +46,23 @@ public class UsuarioService {
         return usuarioRepository.findByCorreo(correo);
     }
 
+
+    @Autowired
+    private PacienteRepository pacienteRepository;
+
+    public Usuario registrarUsuario(Usuario usuario) {
+        usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
+        Usuario nuevoUsuario = usuarioRepository.save(usuario);
+
+        if ("usuario".equalsIgnoreCase(nuevoUsuario.getRol())) {
+            Paciente paciente = new Paciente();
+            paciente.setNombre(nuevoUsuario.getNombre());
+            paciente.setApellido(nuevoUsuario.getApellido());
+            paciente.setCorreo(nuevoUsuario.getCorreo());
+            paciente.setUsuario(nuevoUsuario);
+            pacienteRepository.save(paciente);
+        }
+
+        return nuevoUsuario;
+    }
 }

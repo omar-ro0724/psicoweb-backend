@@ -19,6 +19,8 @@ public class Cita {
     private LocalDate fecha;
     private LocalTime hora;
     private String estado;
+    private Usuario usuario;
+    
 
     @ManyToOne
     @JoinColumn(name = "idPaciente", insertable = false, updatable = false)

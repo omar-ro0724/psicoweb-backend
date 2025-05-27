@@ -1,26 +1,18 @@
 package com.example.psicoweb.model;
-import jakarta.persistence.*;
 
-@Entity
-@Table(name = "usuarios")
-public class Usuario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class PsicologoRequest {
 
     private String nombre;
     private String apellido;
     private String correo;
     private String contrasena;
-    private String rol;
 
-    public Integer getId() {
-        return id;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getNombre() {
@@ -39,14 +31,6 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
     public String getContrasena() {
         return contrasena;
     }
@@ -54,12 +38,5 @@ public class Usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
 }
+

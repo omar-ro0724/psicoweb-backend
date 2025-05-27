@@ -7,11 +7,30 @@ import jakarta.persistence.*;
 public class Psicologo {
 
     @Id
-    private Long idPsicologo; // FK de Usuario
+    private Long idPsicologo;
 
+    private String nombre;
+    private String apellido;
     private String especialidad;
     private String descripcion;
     private Double tarifa;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
     private String email;
 
     public String getEmail() {
